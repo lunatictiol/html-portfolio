@@ -1,0 +1,12 @@
+package src
+import "github.com/lunatictiol/portfolio/models"
+templ Projects(items []models.Project) {
+    <ul>
+  for _, item := range items {
+   <li class="border rounded-lg p-4 mb-2">
+        <h3 class="text-xl font-semibold"><a target="_blank" href={(templ.URL(item.URL))} class="text-blue-500 hover:underline">{item.Name }</a></h3>
+        <p class="text-gray-700">{item.Description }</p>
+    </li>
+  }
+  </ul>
+}

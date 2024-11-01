@@ -1,0 +1,18 @@
+package src
+
+import "github.com/lunatictiol/portfolio/models"
+
+templ Experience(items []models.Experience) {
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Experience</h2>
+        <ul class="space-y-4">
+            for _, item := range items {
+                <li class="bg-white border border-gray-300 rounded-lg p-4 transition duration-300 ease-in-out hover:shadow-lg">
+                    <h3 class="text-xl font-semibold text-blue-600">{item.CompanyName}</h3>
+                    <p class="text-gray-700">{item.Description}</p>
+                    <p class="text-gray-500 text-sm italic">{item.Duration}</p>
+                </li>
+            }
+        </ul>
+    </div>
+}
