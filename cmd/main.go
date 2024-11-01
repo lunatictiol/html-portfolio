@@ -35,6 +35,7 @@ func main() {
 	})
 
 	projects := []models.Project{
+		{ID: 3, Name: "That pet place", Description: "\"That pet place\" is a mobile application that leverages technology to create a convenient and efficient platform that connects pet owners with local pet stores and services.The system comprises a mobile application developed in Kotlin, and a backend system built with Go. Users can log in, create accounts, manage pet profiles, search for and book appointments at nearby shops and clinics. The server side allows shop owners to manage available services and appointments.", URL: "https://github.com/lunatictiol/that-pet-place-backend-go"},
 		{ID: 1, Name: "Rest api using go", Description: "This Go REST API provides endpoints for managing events. Users can register, log in, create events, and view event details. The API utilizes the Gin framework for efficient routing and JWT authentication for secure user sessions.", URL: "https://github.com/lunatictiol/rest-api-with-go"},
 		{ID: 2, Name: "worldle-app-clone", Description: "Wordle app clone using react native, expo and clerk.", URL: "https://github.com/lunatictiol/worldle-app"},
 	}
