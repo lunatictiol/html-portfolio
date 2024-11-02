@@ -1,11 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/lunatictiol/portfolio/cmd/render"
 	"github.com/lunatictiol/portfolio/models"
 	"github.com/lunatictiol/portfolio/src"
@@ -26,7 +30,13 @@ func NewTemplates() *Templates {
 }
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	gin.SetMode(os.Getenv("GIN_MODE"))
 	r := gin.Default()
+
 	r.HTMLRender = &render.TemplRender{}
 	r.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
@@ -54,5 +64,5 @@ func main() {
 	r.GET("/experience", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", src.Experience(exp))
 	})
-	r.Run()
+	r.Run(fmt.Sprintf(":%s", os.Getenv("PORT")))
 }
