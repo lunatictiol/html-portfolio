@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"html/template"
 	"io"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"github.com/lunatictiol/portfolio/cmd/render"
 	"github.com/lunatictiol/portfolio/models"
 	"github.com/lunatictiol/portfolio/src"
@@ -30,10 +28,10 @@ func NewTemplates() *Templates {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 	gin.SetMode(os.Getenv("GIN_MODE"))
 	r := gin.Default()
 
