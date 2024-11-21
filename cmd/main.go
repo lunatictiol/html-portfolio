@@ -32,11 +32,12 @@ func main() {
 	// if err != nil {
 	// 	log.Fatal("Error loading .env file")
 	// }
-	gin.SetMode(os.Getenv("GIN_MODE"))
-	r := gin.Default()
 
-	r.HTMLRender = &render.TemplRender{}
-	r.GET("/ping", func(ctx *gin.Context) {
+	gin.SetMode(os.Getenv("GIN_MODE"))
+	rs := gin.Default()
+
+	rs.HTMLRender = &render.TemplRender{}
+	rs.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
 			"message": "okay",
 		})
@@ -53,14 +54,14 @@ func main() {
 		{ID: 2, CompanyName: "Tabbly", Description: "Served as a solo developer, where I developed the iOS app, implemented policies, and successfully launched it on the App Store.", Duration: "Part-time"},
 	}
 
-	r.GET("/", func(ctx *gin.Context) {
+	rs.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", src.Index())
 	})
-	r.GET("/projects", func(ctx *gin.Context) {
+	rs.GET("/projects", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", src.Projects(projects))
 	})
-	r.GET("/experience", func(ctx *gin.Context) {
+	rs.GET("/experience", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", src.Experience(exp))
 	})
-	r.Run(fmt.Sprintf(":%s", os.Getenv("PORT")))
+	rs.Run(fmt.Sprintf(":%s", "8080"))
 }
